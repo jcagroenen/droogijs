@@ -32,3 +32,6 @@ auth.json
 
 # WP-CLI
 wp-cli.local.yml
+
+# MagicPattern
+examples
