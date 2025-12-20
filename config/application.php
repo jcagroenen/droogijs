@@ -119,6 +119,18 @@ Config::define('NONCE_SALT', env('NONCE_SALT'));
 /**
  * Custom Settings
  */
+Config::define('WP_ALLOW_MULTISITE', env('WP_ALLOW_MULTISITE') ?: false);
+
+/**
+ * Multisite Network Settings
+ */
+Config::define('MULTISITE', true);
+Config::define('SUBDOMAIN_INSTALL', true);
+Config::define('DOMAIN_CURRENT_SITE', env('DOMAIN_CURRENT_SITE') ?: 'droogijs.test');
+Config::define('PATH_CURRENT_SITE', '/');
+Config::define('SITE_ID_CURRENT_SITE', 1);
+Config::define('BLOG_ID_CURRENT_SITE', 1);
+
 Config::define('AUTOMATIC_UPDATER_DISABLED', true);
 Config::define('DISABLE_WP_CRON', env('DISABLE_WP_CRON') ?: false);
 
