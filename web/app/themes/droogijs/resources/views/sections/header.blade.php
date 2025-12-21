@@ -1,9 +1,9 @@
-<header class="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-md border-b border-gray-100">
+<header class="fixed top-0 left-0 right-0 z-50 bg-white/90 backdrop-blur-md border-b border-gray-100">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="flex items-center justify-between h-16">
+    <div class="flex items-center justify-between h-20">
       {{-- Logo --}}
-      <a class="text-xl font-bold text-gray-900" href="{{ home_url('/') }}">
-        {!! $siteName !!}
+      <a class="block" href="{{ home_url('/') }}">
+        @include('partials.logo', ['class' => 'h-12'])
       </a>
 
       {{-- Desktop Navigation --}}

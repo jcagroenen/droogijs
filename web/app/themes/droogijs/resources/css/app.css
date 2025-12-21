@@ -157,3 +157,19 @@
 .hover\:bg-brand-600:hover { background-color: var(--brand-600); }
 .hover\:bg-brand-700:hover { background-color: var(--brand-700); }
 .hover\:bg-brand-800:hover { background-color: var(--brand-800); }
+
+/* Remove underline from card links */
+a.no-underline,
+a.no-underline:hover {
+  text-decoration: none;
+}
+
+/* Fix fixed header when admin bar is present */
+.admin-bar header.fixed {
+  top: 32px;
+}
+@media screen and (max-width: 782px) {
+  .admin-bar header.fixed {
+    top: 46px;
+  }
+}

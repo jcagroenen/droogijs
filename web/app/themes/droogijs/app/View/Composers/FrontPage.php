@@ -147,87 +147,46 @@ class FrontPage extends Composer
     }
 
     /**
-     * Use cases section data per brand.
+     * Use cases section data - fetches latest posts.
      */
     public function useCasesData(): array
     {
-        return match(get_current_brand()) {
-            'thuis' => [
-                'title' => 'Inspiratie voor thuis',
-                'items' => [
-                    [
-                        'title' => 'Halloween Feest',
-                        'category' => 'Themafeest',
-                        'description' => 'Maak je Halloween feest onvergetelijk met kruipende mist over de vloer.',
-                    ],
-                    [
-                        'title' => 'Cocktails & Drankjes',
-                        'category' => 'Diner',
-                        'description' => 'Serveer rokende cocktails die je gasten versteld doen staan.',
-                    ],
-                    [
-                        'title' => 'School Experimenten',
-                        'category' => 'Educatie',
-                        'description' => 'Leuke en veilige natuurkunde proefjes voor kinderen.',
-                    ],
-                    [
-                        'title' => 'Dessert Presentatie',
-                        'category' => 'Culinair',
-                        'description' => 'Geef je zelfgemaakte ijs of dessert een restaurant-waardige presentatie.',
-                    ],
-                ],
-            ],
-            'horeca' => [
-                'title' => 'Toepassingen in de Horeca',
-                'items' => [
-                    [
-                        'title' => 'Signature Cocktails',
-                        'category' => 'Bar & Club',
-                        'description' => 'Verhoog de marge op uw cocktails met een unieke beleving.',
-                    ],
-                    [
-                        'title' => 'Buffet Presentatie',
-                        'category' => 'Catering',
-                        'description' => 'Houdt gerechten koel én vers met een mystieke uitstraling.',
-                    ],
-                    [
-                        'title' => 'Champagne Service',
-                        'category' => 'VIP',
-                        'description' => 'Exclusieve flessen service met rokende koelers.',
-                    ],
-                    [
-                        'title' => 'Moleculair Koken',
-                        'category' => 'Keuken',
-                        'description' => 'Voor de chef die wil experimenteren met texturen en temperaturen.',
-                    ],
-                ],
-            ],
-            'industrie' => [
-                'title' => 'Sectoren',
-                'items' => [
-                    [
-                        'title' => 'Farmaceutisch Transport',
-                        'category' => 'Logistiek',
-                        'description' => 'Gegarandeerde temperatuurbeheersing voor vaccins en medicijnen.',
-                    ],
-                    [
-                        'title' => 'Machine Reiniging',
-                        'category' => 'Onderhoud',
-                        'description' => 'Non-abrasief reinigen van productielijnen zonder demontage.',
-                    ],
-                    [
-                        'title' => 'Krimptechniek',
-                        'category' => 'Metaal',
-                        'description' => 'Krimpen van metalen onderdelen voor precisie-assemblage.',
-                    ],
-                    [
-                        'title' => 'Voedselproductie',
-                        'category' => 'Food',
-                        'description' => 'Snelkoelen van deegwaren en vleesproducten in de productielijn.',
-                    ],
-                ],
-            ],
+        $title = match(get_current_brand()) {
+            'thuis' => 'Inspiratie voor thuis',
+            'horeca' => 'Toepassingen in de Horeca',
+            'industrie' => 'Sectoren',
         };
+
+        // Fetch latest 4 posts
+        $query = new \WP_Query([
+            'post_type' => 'post',
+            'posts_per_page' => 4,
+            'post_status' => 'publish',
+        ]);
+
+        $items = collect($query->posts)->map(function ($post) {
+            $categories = get_the_category($post->ID);
+            $category = !empty($categories) ? $categories[0]->name : 'Algemeen';
+
+            $description = get_the_excerpt($post->ID);
+            $description = wp_strip_all_tags($description);
+            $description = wp_trim_words($description, 15, '...');
+
+            return [
+                'title' => get_the_title($post->ID),
+                'category' => $category,
+                'description' => $description,
+                'url' => get_permalink($post->ID),
+                'image' => get_the_post_thumbnail_url($post->ID, 'medium_large'),
+            ];
+        })->toArray();
+
+        wp_reset_postdata();
+
+        return [
+            'title' => $title,
+            'items' => $items,
+        ];
     }
 
     /**
