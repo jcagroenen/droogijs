@@ -9,9 +9,9 @@
 
     <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
       @foreach($data['items'] as $feature)
-        <div class="p-8 rounded-2xl border border-gray-100 bg-white shadow-sm transition-all duration-300 hover:shadow-lg hover:-translate-y-1 hover:border-brand-200">
-          <div class="w-14 h-14 rounded-xl flex items-center justify-center mb-6 bg-brand-50 text-brand-600">
-            @svg('icon-' . $feature['icon'], 'w-7 h-7')
+        <div class="p-8 rounded-2xl border border-gray-100 bg-white shadow-sm transition-all duration-300 hover:shadow-lg hover:-translate-y-1 hover:border-brand-200 text-center">
+          <div class="w-14 h-14 rounded-xl flex items-center justify-center mb-6 mx-auto bg-brand-50 text-brand-600">
+            @svg('icon-' . $feature['icon'], ['class' => 'w-7 h-7', 'width' => '28', 'height' => '28'])
           </div>
           <h3 class="text-xl font-bold text-gray-900 mb-3">
             {{ $feature['title'] }}
