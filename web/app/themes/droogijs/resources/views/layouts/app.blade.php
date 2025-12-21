@@ -20,10 +20,6 @@
       @include('sections.header')
 
       <main id="main" class="main">
-        <div class="text-3xl font-bold bg-brand-600 text-white p-4 rounded-lg">
-          Current brand: {{ App\get_current_brand() }}
-        </div>
-
         @yield('content')
       </main>
 
