@@ -8,29 +8,44 @@ Three WooCommerce stores on WordPress Multisite, one Sage theme with dynamic bra
 
 - Bedrock (WordPress boilerplate)
 - Sage 11 (theme)
+- Acorn 5 (Laravel components for Sage)
 - Tailwind CSS v4
+- Blade Icons (SVG icon management)
 - WooCommerce (per-site)
 
 ## Directory Structure
 
 ```
 droogijs/
-├── config/              # Bedrock config (multisite settings)
-├── docs/                # This documentation
+├── config/                  # Bedrock config (multisite settings)
+├── docs/                    # This documentation
 ├── web/
 │   └── app/
 │       └── themes/
 │           └── droogijs/
 │               ├── app/
-│               │   ├── filters.php         # Brand detection
-│               │   └── View/Composers/     # View composers
+│               │   ├── filters.php             # Brand detection
+│               │   └── View/Composers/
+│               │       ├── FrontPage.php       # Homepage data
+│               │       └── Inspiratie.php      # Blog page data
+│               ├── config/
+│               │   └── blade-icons.php         # Icon config
 │               └── resources/
-│                   ├── css/app.css         # Brand colors
+│                   ├── css/app.css             # Brand colors + utilities
+│                   ├── icons/                  # SVG icons
 │                   └── views/
 │                       ├── front-page.blade.php
+│                       ├── template-inspiratie.blade.php
 │                       ├── layouts/
 │                       ├── partials/
+│                       │   ├── logo.blade.php      # Brand logos
+│                       │   ├── blog-card.blade.php # Blog card component
+│                       │   ├── hero.blade.php
+│                       │   ├── features.blade.php
+│                       │   ├── use-cases.blade.php
+│                       │   └── cta.blade.php
 │                       └── sections/
+│                           └── header.blade.php
 ```
 
 ## Domains (Production)
@@ -44,3 +59,16 @@ droogijs/
 ## Products
 
 Not synced between stores. Each store has its own catalog and pricing.
+
+## Composer Hierarchy
+
+Two separate composer.json files:
+
+```
+droogijs/
+├── composer.json           # Bedrock: WordPress core, plugins
+└── web/app/themes/droogijs/
+    └── composer.json       # Sage: Acorn, Blade Icons, theme deps
+```
+
+Run `composer require` from the appropriate directory.
