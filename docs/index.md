@@ -1,5 +1,28 @@
 # Droogijs Documentation
 
+## Work In Progress (WIP)
+
+**Last session:** WooCommerce template implementation
+
+**What we did:**
+- Installed `generoi/sage-woocommerce` in theme for Blade template support
+- Created modular WooCommerce templates (Magento-like structure)
+- Built shop page with brand-specific headers, trust badges, product grid
+- Built single product page with Alpine.js gallery, pricing, add to cart
+- Updated header "Bestellen" button to link to WooCommerce shop
+
+**Where we left off:**
+- Templates are built but WooCommerce needs configuration in WP Admin
+- Need to set Shop page in WooCommerce → Settings → Products
+- Need to add products to test the templates
+
+**Ready to continue with:**
+- Configure WooCommerce shop page
+- Add test products
+- Style cart & checkout templates (woocommerce/cart/, woocommerce/checkout/)
+- Mobile menu
+- Footer
+
 ## Current State
 
 - Multisite configured and working
@@ -10,12 +33,17 @@
 - Blade Icons installed for SVG icon management
 - Inspiratie (blog) page with dynamic post grid
 - Use-cases section pulls from actual blog posts
+- WooCommerce templates with modular structure
+- Shop page with brand-specific headers and trust badges
+- Single product page with gallery, pricing, add to cart
 
 ## Next Steps
 
+- Configure WooCommerce shop page in WP Admin
+- Add products to each site
 - Mobile menu functionality (JS)
 - Footer section
-- WooCommerce installation & templates
+- Cart & checkout template styling
 - Additional pages (contact, about, etc.)
 - Single post template styling
 
@@ -29,6 +57,7 @@
 | [view-composers.md](view-composers.md) | Sage view composers for brand content |
 | [blade-icons.md](blade-icons.md) | Blade Icons setup and usage |
 | [inspiratie.md](inspiratie.md) | Blog/Inspiratie page setup |
+| [woocommerce.md](woocommerce.md) | WooCommerce templates and structure |
 | [todo.md](todo.md) | Deployment tasks |
 
 ## Sites

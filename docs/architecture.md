@@ -44,8 +44,15 @@ droogijs/
 │                       │   ├── features.blade.php
 │                       │   ├── use-cases.blade.php
 │                       │   └── cta.blade.php
-│                       └── sections/
-│                           └── header.blade.php
+│                       ├── sections/
+│                       │   └── header.blade.php
+│                       └── woocommerce/
+│                           ├── archive-product.blade.php
+│                           ├── single-product.blade.php
+│                           ├── content-product.blade.php
+│                           ├── catalog_view/       # Shop page partials
+│                           ├── product_card/       # Product card partials
+│                           └── product_view/       # Single product partials
 ```
 
 ## Domains (Production)
@@ -72,3 +79,11 @@ droogijs/
 ```
 
 Run `composer require` from the appropriate directory.
+
+## Package Locations
+
+| Package | Location | Purpose |
+|---------|----------|---------|
+| wpackagist-plugin/woocommerce | Root | WooCommerce plugin |
+| generoi/sage-woocommerce | Theme | Blade template support |
+| blade-ui-kit/blade-icons | Theme | SVG icon management |
