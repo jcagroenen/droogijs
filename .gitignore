@@ -27,6 +27,9 @@ web/app/languages/*
 .env.*
 !.env.example
 
+#deployer
+example.deploy.php
+
 # Composer
 /vendor
 auth.json
