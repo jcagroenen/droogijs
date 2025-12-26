@@ -2,26 +2,27 @@
 
 ## Work In Progress (WIP)
 
-**Last session:** WooCommerce template implementation
+**Last session:** Deployment to staging (Ploi)
 
 **What we did:**
-- Installed `generoi/sage-woocommerce` in theme for Blade template support
-- Created modular WooCommerce templates (Magento-like structure)
-- Built shop page with brand-specific headers, trust badges, product grid
-- Built single product page with Alpine.js gallery, pricing, add to cart
-- Updated header "Bestellen" button to link to WooCommerce shop
+- Deployed multisite to Ploi with Deployer
+- Fixed multisite installation issues (redirect loops, wp-signup.php)
+- Configured SSL for subdomains
+- Set up DNS wildcard for subdomains
+- Created staging sites (thuis/horeca/industrie)
+- Added dev/staging site switcher in header
+- Network activated WooCommerce
 
 **Where we left off:**
-- Templates are built but WooCommerce needs configuration in WP Admin
-- Need to set Shop page in WooCommerce → Settings → Products
-- Need to add products to test the templates
+- Staging is live at `droogijs.groenen-webdev.nl`
+- All three subsites working with SSL
+- Site switcher for easy testing between brands
 
 **Ready to continue with:**
-- Configure WooCommerce shop page
-- Add test products
-- Style cart & checkout templates (woocommerce/cart/, woocommerce/checkout/)
-- Mobile menu
-- Footer
+- Add products to each site
+- Style cart & checkout templates
+- Mobile menu functionality
+- Footer section
 
 ## Current State
 
@@ -58,6 +59,7 @@
 | [blade-icons.md](blade-icons.md) | Blade Icons setup and usage |
 | [inspiratie.md](inspiratie.md) | Blog/Inspiratie page setup |
 | [woocommerce.md](woocommerce.md) | WooCommerce templates and structure |
+| [deployment.md](deployment.md) | Deploying multisite to Ploi (full guide) |
 | [todo.md](todo.md) | Deployment tasks |
 
 ## Sites
