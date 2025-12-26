@@ -153,3 +153,10 @@ add_action('widgets_init', function () {
         'id' => 'sidebar-footer',
     ] + $config);
 });
+
+/**
+ * Enqueue Alpine.js
+ */
+add_action('wp_enqueue_scripts', function () {
+    wp_enqueue_script('alpine-js', get_template_directory_uri() . '/resources/scripts/alpine.js', [], null, ['in_footer' => false, 'strategy' => 'defer']);
+});

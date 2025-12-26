@@ -85,5 +85,16 @@ Run `composer require` from the appropriate directory.
 | Package | Location | Purpose |
 |---------|----------|---------|
 | wpackagist-plugin/woocommerce | Root | WooCommerce plugin |
+| wpackagist-plugin/wordpress-importer | Root | XML import support |
 | generoi/sage-woocommerce | Theme | Blade template support |
 | blade-ui-kit/blade-icons | Theme | SVG icon management |
+
+## Static Assets (Images)
+
+Images in `resources/images/` are processed by Vite. Use in Blade templates:
+
+```php
+<img src="{{ Vite::asset('resources/images/filename.jpg') }}" alt="...">
+```
+
+Note: `@asset()` doesn't work for images in Sage 11 - use `Vite::asset()` instead.

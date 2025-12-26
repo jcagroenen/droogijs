@@ -2,6 +2,9 @@
 @source "../views/";
 @source "../../app/";
 
+/* Alpine.js cloak - hide elements until Alpine initializes */
+[x-cloak] { display: none !important; }
+
 /*
  * Brand Color System
  * Each site in the multisite network uses a different brand color.
@@ -172,4 +175,31 @@ a.no-underline:hover {
   .admin-bar header.fixed {
     top: 46px;
   }
+}
+
+/* WooCommerce shop loop header fixes */
+.woocommerce-result-count {
+  margin: 0;
+  padding: 0;
+  color: #6b7280;
+  font-size: 0.875rem;
+}
+
+.woocommerce-ordering {
+  margin: 0;
+}
+
+.woocommerce-ordering select {
+  padding: 0.5rem 2rem 0.5rem 0.75rem;
+  border: 1px solid #e5e7eb;
+  border-radius: 0.5rem;
+  font-size: 0.875rem;
+  background-color: white;
+  cursor: pointer;
+}
+
+.woocommerce-ordering select:focus {
+  outline: none;
+  border-color: var(--brand-500);
+  box-shadow: 0 0 0 2px var(--brand-100);
 }

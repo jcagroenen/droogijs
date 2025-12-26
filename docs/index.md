@@ -2,7 +2,7 @@
 
 ## Work In Progress (WIP)
 
-**Last session:** Deployment to staging (Ploi)
+**Last session:** Deployment & content setup
 
 **What we did:**
 - Deployed multisite to Ploi with Deployer
@@ -12,11 +12,15 @@
 - Created staging sites (thuis/horeca/industrie)
 - Added dev/staging site switcher in header
 - Network activated WooCommerce
+- Installed WordPress Importer plugin for XML imports
+- Updated hero CTA button to link to shop
+- Added hero image (Droogijs_gaslas.jpg)
 
 **Where we left off:**
 - Staging is live at `droogijs.groenen-webdev.nl`
 - All three subsites working with SSL
 - Site switcher for easy testing between brands
+- Hero section complete with image
 
 **Ready to continue with:**
 - Add products to each site

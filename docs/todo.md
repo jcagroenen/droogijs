@@ -16,6 +16,7 @@
 - [ ] Run `wp acorn optimize` after deploy (add to deploy.php)
 - [ ] Configure web server to deny access to `*.blade.php` files
 - [ ] Set up production domains when ready
+- [ ] Pin Alpine.js to specific version (currently using @3.x.x, pin to 3.14.3)
 
 ## Notes
 
