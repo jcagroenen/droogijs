@@ -57,16 +57,9 @@
       <div class="relative lg:h-[600px] flex items-center justify-center">
         <div class="relative w-full aspect-square max-w-md lg:max-w-full">
           <div class="absolute inset-0 rounded-3xl rotate-3 opacity-20 bg-brand-200"></div>
-          <div class="absolute inset-0 rounded-3xl -rotate-3 bg-white shadow-2xl overflow-hidden border border-gray-100 flex items-center justify-center">
-            <div class="text-center p-8">
-              <div class="w-24 h-24 mx-auto mb-6 rounded-full flex items-center justify-center bg-brand-100 text-brand-600">
-                @svg('icon-beaker', 'w-12 h-12')
-              </div>
-              <p class="text-gray-400 font-medium">
-                Productafbeelding
-              </p>
-            </div>
-            <div class="absolute bottom-0 left-0 right-0 h-1/2 bg-gradient-to-t from-white via-white/80 to-transparent"></div>
+          <div class="absolute inset-0 rounded-3xl -rotate-3 bg-white shadow-2xl overflow-hidden border border-gray-100">
+            <img src="{{ Vite::asset('resources/images/Droogijs_gaslas.jpg') }}" alt="Droogijs" class="w-full h-full object-cover">
+            <div class="absolute bottom-0 left-0 right-0 h-1/3 bg-gradient-to-t from-white via-white/80 to-transparent"></div>
           </div>
         </div>
       </div>
