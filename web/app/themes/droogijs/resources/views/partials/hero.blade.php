@@ -26,7 +26,7 @@
         </p>
 
         <div class="flex flex-col sm:flex-row gap-4">
-          <a href="#bestellen" class="inline-flex items-center justify-center px-8 py-4 text-lg font-semibold text-white rounded-xl shadow-lg transition-all transform hover:-translate-y-1 bg-brand-600 hover:bg-brand-700">
+          <a href="{{ function_exists('wc_get_page_permalink') ? wc_get_page_permalink('shop') : '/shop/' }}" class="inline-flex items-center justify-center px-8 py-4 text-lg font-semibold text-white rounded-xl shadow-lg transition-all transform hover:-translate-y-1 bg-brand-600 hover:bg-brand-700">
             {{ $data['ctaText'] }}
             @svg('icon-arrow-right', 'ml-2 w-5 h-5')
           </a>
