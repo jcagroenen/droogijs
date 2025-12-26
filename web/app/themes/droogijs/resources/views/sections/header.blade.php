@@ -1,14 +1,12 @@
 {{-- Site Switcher (dev/staging only) --}}
-@php $showSwitcher = in_array(wp_get_environment_type(), ['development', 'staging', 'local']); @endphp
-@if($showSwitcher)
+@if(in_array(wp_get_environment_type(), ['development', 'staging', 'local']))
 @php
   $brand = \App\get_current_brand();
   $domain = parse_url(home_url(), PHP_URL_HOST);
-  // Get base domain (e.g., droogijs.test or droogijs.groenen-webdev.nl)
   $baseDomain = preg_replace('/^(thuis|horeca|industrie)\./', '', $domain);
   $scheme = is_ssl() ? 'https' : 'http';
 @endphp
-<div class="fixed top-0 left-0 right-0 z-50 bg-gray-900 text-white text-sm py-2">
+<div class="bg-gray-900 text-white text-sm py-2">
   <div class="max-w-7xl mx-auto px-4 flex items-center justify-center gap-4">
     <span class="text-gray-400">Switch site:</span>
     <a href="{{ $scheme }}://thuis.{{ $baseDomain }}" class="px-3 py-1 rounded {{ $brand === 'thuis' ? 'bg-cyan-500' : 'bg-gray-700 hover:bg-gray-600' }}">Thuis</a>
@@ -18,7 +16,7 @@
 </div>
 @endif
 
-<header class="fixed left-0 right-0 z-40 bg-white/90 backdrop-blur-md border-b border-gray-100 {{ $showSwitcher ? 'top-9' : 'top-0' }}">
+<header class="sticky top-0 z-40 bg-white/90 backdrop-blur-md border-b border-gray-100">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="flex items-center justify-between h-20">
       {{-- Logo --}}
