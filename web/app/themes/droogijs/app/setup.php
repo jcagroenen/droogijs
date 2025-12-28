@@ -160,3 +160,23 @@ add_action('widgets_init', function () {
 add_action('wp_enqueue_scripts', function () {
     wp_enqueue_script('alpine-js', get_template_directory_uri() . '/resources/scripts/alpine.js', [], null, ['in_footer' => false, 'strategy' => 'defer']);
 });
+
+/**
+ * Enqueue Flatpickr for delivery date picker
+ */
+add_action('wp_enqueue_scripts', function () {
+    // Only load on product pages, cart, and checkout
+    if (is_product() || is_cart() || is_checkout()) {
+        // Flatpickr CSS
+        wp_enqueue_style('flatpickr', 'https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css', [], '4.6.13');
+
+        // Flatpickr JS
+        wp_enqueue_script('flatpickr', 'https://cdn.jsdelivr.net/npm/flatpickr', [], '4.6.13', true);
+
+        // Flatpickr Dutch locale
+        wp_enqueue_script('flatpickr-nl', 'https://cdn.jsdelivr.net/npm/flatpickr/dist/l10n/nl.js', ['flatpickr'], '4.6.13', true);
+
+        // Our delivery date script
+        wp_enqueue_script('delivery-date', get_template_directory_uri() . '/resources/scripts/delivery-date.js', ['flatpickr', 'flatpickr-nl'], null, true);
+    }
+});

@@ -44,7 +44,24 @@ defined('ABSPATH') || exit;
               <p class="text-sm text-gray-500">
                 <?php echo apply_filters('woocommerce_checkout_cart_item_quantity', sprintf('&times; %s', $cart_item['quantity']), $cart_item, $cart_item_key); ?>
               </p>
-              <?php echo wc_get_formatted_cart_item_data($cart_item); ?>
+              <?php
+              // Always show delivery date - use stored date or calculate default
+              $delivery_date = $cart_item['delivery_date'] ?? '';
+              if (empty($delivery_date)) {
+                $default_date = new DateTime();
+                $default_date->modify('+1 day');
+                if ($default_date->format('w') == 0) {
+                  $default_date->modify('+1 day');
+                }
+                $delivery_date = $default_date->format('d-m-Y');
+              }
+
+              echo '<p class="text-sm text-brand-600 font-medium mt-1">';
+              echo '<svg class="w-4 h-4 inline-block mr-1 align-text-bottom" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 012.25-2.25h13.5A2.25 2.25 0 0121 7.5v11.25m-18 0A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75m-18 0v-7.5A2.25 2.25 0 015.25 9h13.5A2.25 2.25 0 0121 11.25v7.5" /></svg>';
+              echo 'Levering: ' . esc_html($delivery_date);
+              echo '</p>';
+              // Don't show wc_get_formatted_cart_item_data - we display delivery date ourselves
+              ?>
             </div>
 
             {{-- Price --}}

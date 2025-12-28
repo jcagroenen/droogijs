@@ -103,7 +103,35 @@ defined('ABSPATH') || exit;
 
                         <?php
                         do_action('woocommerce_after_cart_item_name', $cart_item, $cart_item_key);
-                        echo wc_get_formatted_cart_item_data($cart_item);
+
+                        // Always show delivery date picker - use stored date or calculate default
+                        $delivery_date = $cart_item['delivery_date'] ?? '';
+                        if (empty($delivery_date)) {
+                          // Calculate default date (tomorrow, skip Sunday)
+                          $default_date = new DateTime();
+                          $default_date->modify('+1 day');
+                          if ($default_date->format('w') == 0) {
+                            $default_date->modify('+1 day');
+                          }
+                          $delivery_date = $default_date->format('d-m-Y');
+                        }
+                        ?>
+                        <div class="mt-2 flex items-center gap-2">
+                          <svg class="w-4 h-4 text-brand-600 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 012.25-2.25h13.5A2.25 2.25 0 0121 7.5v11.25m-18 0A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75m-18 0v-7.5A2.25 2.25 0 015.25 9h13.5A2.25 2.25 0 0121 11.25v7.5" />
+                          </svg>
+                          <span class="text-sm text-brand-600 font-medium">Levering:</span>
+                          <input
+                            type="text"
+                            name="cart_delivery_date[<?php echo esc_attr($cart_item_key); ?>]"
+                            class="delivery-date-picker text-sm px-2 py-1 border border-brand-300 rounded cursor-pointer bg-brand-50 text-brand-700 font-medium max-w-[110px]"
+                            data-cart-item-key="<?php echo esc_attr($cart_item_key); ?>"
+                            data-min-days="1"
+                            value="<?php echo esc_attr($delivery_date); ?>"
+                          />
+                        </div>
+                        <?php
+                        // Don't show wc_get_formatted_cart_item_data - we display delivery date ourselves
 
                         if ($_product->backorders_require_notification() && $_product->is_on_backorder($cart_item['quantity'])) {
                           echo '<p class="text-sm text-amber-600 mt-1">' . esc_html__('Available on backorder', 'woocommerce') . '</p>';

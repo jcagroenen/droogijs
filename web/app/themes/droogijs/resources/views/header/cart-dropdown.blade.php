@@ -59,6 +59,7 @@
             $product_price = WC()->cart->get_product_price($product);
             $quantity = $cart_item['quantity'];
             $thumbnail = $product->get_image('thumbnail', ['class' => 'w-full h-full object-cover']);
+            $delivery_date = $cart_item['delivery_date'] ?? '';
           @endphp
           <div class="p-4 border-b border-gray-100 hover:bg-gray-50">
             <div class="flex gap-3">
@@ -68,6 +69,14 @@
               <div class="flex-1 min-w-0">
                 <h4 class="font-semibold text-sm truncate">{{ $product_name }}</h4>
                 <p class="text-xs text-gray-500">Aantal: {{ $quantity }}</p>
+                @if($delivery_date)
+                  <p class="text-xs text-brand-600 font-medium mt-1">
+                    <svg class="w-3 h-3 inline-block mr-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 012.25-2.25h13.5A2.25 2.25 0 0121 7.5v11.25m-18 0A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75m-18 0v-7.5A2.25 2.25 0 015.25 9h13.5A2.25 2.25 0 0121 11.25v7.5" />
+                    </svg>
+                    {{ $delivery_date }}
+                  </p>
+                @endif
                 <span class="text-sm font-bold">{!! $product_price !!}</span>
               </div>
             </div>

@@ -589,3 +589,134 @@ a.no-underline:hover {
   max-height: 1.5rem;
   width: auto;
 }
+
+/* ==========================================================================
+   Flatpickr Date Picker Customizations
+   ========================================================================== */
+
+/* Override Flatpickr theme to match brand colors */
+.flatpickr-calendar {
+  border-radius: 0.75rem;
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+  border: 1px solid #e5e7eb;
+}
+
+.flatpickr-months {
+  border-radius: 0.75rem 0.75rem 0 0;
+}
+
+.flatpickr-current-month {
+  font-weight: 600;
+}
+
+/* Navigation arrows */
+.flatpickr-months .flatpickr-prev-month,
+.flatpickr-months .flatpickr-next-month {
+  fill: #374151;
+}
+
+.flatpickr-months .flatpickr-prev-month:hover,
+.flatpickr-months .flatpickr-next-month:hover {
+  fill: var(--brand-600);
+}
+
+/* Day cells */
+.flatpickr-day {
+  border-radius: 0.5rem;
+  font-weight: 500;
+}
+
+.flatpickr-day:hover {
+  background-color: var(--brand-50);
+  border-color: var(--brand-50);
+}
+
+/* Selected day */
+.flatpickr-day.selected,
+.flatpickr-day.selected:hover {
+  background-color: var(--brand-600);
+  border-color: var(--brand-600);
+  color: white;
+}
+
+/* Today */
+.flatpickr-day.today {
+  border-color: var(--brand-400);
+}
+
+.flatpickr-day.today:hover {
+  background-color: var(--brand-50);
+  border-color: var(--brand-400);
+}
+
+/* Disabled days */
+.flatpickr-day.flatpickr-disabled,
+.flatpickr-day.flatpickr-disabled:hover {
+  color: #d1d5db;
+  background: transparent;
+  cursor: not-allowed;
+}
+
+/* Weekday headers */
+.flatpickr-weekday {
+  font-weight: 600;
+  color: #6b7280;
+  font-size: 0.75rem;
+}
+
+/* Input styling when active */
+.flatpickr-input.active {
+  border-color: var(--brand-500);
+  box-shadow: 0 0 0 3px var(--brand-100);
+}
+
+/* Delivery date wrapper on product page */
+.delivery-date-wrapper .flatpickr-input {
+  background-image: none;
+}
+
+/* ==========================================================================
+   WooCommerce Add to Cart Button
+   ========================================================================== */
+
+/* Single product add to cart button */
+.single_add_to_cart_button,
+button.single_add_to_cart_button,
+.woocommerce button.single_add_to_cart_button,
+.woocommerce .single_add_to_cart_button {
+  background-color: var(--brand-600) !important;
+  color: white !important;
+  font-weight: 700 !important;
+  padding: 0.875rem 2rem !important;
+  border-radius: 0.5rem !important;
+  border: none !important;
+  cursor: pointer !important;
+  transition: background-color 0.2s !important;
+}
+
+.single_add_to_cart_button:hover,
+button.single_add_to_cart_button:hover,
+.woocommerce button.single_add_to_cart_button:hover,
+.woocommerce .single_add_to_cart_button:hover {
+  background-color: var(--brand-700) !important;
+}
+
+/* Shop loop add to cart button */
+.add_to_cart_button,
+a.add_to_cart_button,
+.woocommerce a.add_to_cart_button {
+  background-color: var(--brand-600) !important;
+  color: white !important;
+  font-weight: 600 !important;
+  padding: 0.5rem 1rem !important;
+  border-radius: 0.5rem !important;
+  text-decoration: none !important;
+  transition: background-color 0.2s !important;
+}
+
+.add_to_cart_button:hover,
+a.add_to_cart_button:hover,
+.woocommerce a.add_to_cart_button:hover {
+  background-color: var(--brand-700) !important;
+  color: white !important;
+}
