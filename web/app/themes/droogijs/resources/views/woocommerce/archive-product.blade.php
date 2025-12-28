@@ -16,15 +16,12 @@
   {{-- Shop Header with Trust Badges --}}
   @include('woocommerce.catalog_view.shop-header')
 
-  {{-- Breadcrumb --}}
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-4">
+  {{-- Main Content Container --}}
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-4 pb-8">
+    {{-- Breadcrumb --}}
     @php
       do_action('woocommerce_before_main_content');
     @endphp
-  </div>
-
-  {{-- Products Grid --}}
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
     @if (woocommerce_product_loop())
       {{-- Sorting/Filtering Bar --}}
       <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-8 pb-4 border-b border-gray-200">
@@ -34,7 +31,7 @@
       </div>
 
       @if (wc_get_loop_prop('total'))
-        <ul class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+        <ul class="list-none m-0 p-0 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
           @while (have_posts())
             @php
               the_post();

@@ -19,8 +19,8 @@
   ];
 @endphp
 
-<div class="pt-32 pb-16 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-brand-50 to-brand-100">
-  <div class="max-w-7xl mx-auto">
+<div class="bg-gradient-to-br from-brand-50 to-brand-100">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 pb-12">
     <div class="flex items-center gap-3 mb-6">
       <div class="w-12 h-12 rounded-2xl bg-brand-600 flex items-center justify-center">
         @svg('icon-box', 'w-6 h-6 text-white')
