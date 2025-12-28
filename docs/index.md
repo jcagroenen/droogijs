@@ -2,7 +2,7 @@
 
 ## Work In Progress (WIP)
 
-**Last session:** Deployment & content setup
+**Last session:** Deployment, mobile menu & shop fixes
 
 **What we did:**
 - Deployed multisite to Ploi with Deployer
@@ -15,18 +15,27 @@
 - Installed WordPress Importer plugin for XML imports
 - Updated hero CTA button to link to shop
 - Added hero image (Droogijs_gaslas.jpg)
+- Implemented mobile menu with Alpine.js
+- Fixed shop page layout (sorting bar, product grid)
+
+**Technical notes:**
+- Alpine.js is self-hosted in `resources/scripts/alpine.js` (not bundled via Vite due to multisite CORS issues)
+- Alpine is enqueued via WordPress in `app/setup.php`
+- Use `x-on:click` instead of `@click` in Blade templates (Blade interprets `@` as directive)
 
 **Where we left off:**
 - Staging is live at `droogijs.groenen-webdev.nl`
 - All three subsites working with SSL
 - Site switcher for easy testing between brands
 - Hero section complete with image
+- Mobile menu working
+- Shop page grid fixed
 
 **Ready to continue with:**
-- Add products to each site
+- Add products to horeca/industrie sites
 - Style cart & checkout templates
-- Mobile menu functionality
 - Footer section
+- Test mobile menu on staging (deploy needed)
 
 ## Current State
 

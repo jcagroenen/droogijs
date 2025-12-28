@@ -10,6 +10,8 @@
 - [x] DNS wildcard for subdomains
 - [x] WooCommerce network activated
 - [x] Site switcher for dev/staging
+- [x] Mobile menu (Alpine.js)
+- [x] Shop page layout fixes
 
 ## Remaining
 

@@ -98,3 +98,27 @@ Images in `resources/images/` are processed by Vite. Use in Blade templates:
 ```
 
 Note: `@asset()` doesn't work for images in Sage 11 - use `Vite::asset()` instead.
+
+## Alpine.js Setup
+
+Alpine.js is **self-hosted** (not bundled via Vite) due to CORS issues with multisite subdomains during development.
+
+**Location:** `resources/scripts/alpine.js`
+
+**Enqueued in:** `app/setup.php`
+
+```php
+add_action('wp_enqueue_scripts', function () {
+    wp_enqueue_script('alpine-js', get_template_directory_uri() . '/resources/scripts/alpine.js', [], null, ['in_footer' => false, 'strategy' => 'defer']);
+});
+```
+
+**Important:** In Blade templates, use `x-on:click` instead of `@click` because Blade interprets `@` as a directive.
+
+```blade
+{{-- Wrong - Blade will try to parse @click as directive --}}
+<button @click="open = !open">
+
+{{-- Correct --}}
+<button x-on:click="open = !open">
+```
