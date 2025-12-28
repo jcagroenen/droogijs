@@ -203,3 +203,118 @@ a.no-underline:hover {
   border-color: var(--brand-500);
   box-shadow: 0 0 0 2px var(--brand-100);
 }
+
+/* WooCommerce Cart Styles */
+.woocommerce-cart-form .quantity input[type="number"] {
+  -moz-appearance: textfield;
+  width: 4rem;
+  text-align: center;
+  padding: 0.5rem;
+  border: 1px solid #e5e7eb;
+  border-radius: 0.5rem;
+}
+
+.woocommerce-cart-form .quantity input[type="number"]::-webkit-inner-spin-button,
+.woocommerce-cart-form .quantity input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.woocommerce-cart-form .quantity input:focus {
+  outline: none;
+  border-color: var(--brand-500);
+  box-shadow: 0 0 0 2px var(--brand-100);
+}
+
+/* Checkout button styling */
+.wc-proceed-to-checkout .checkout-button,
+.wc-proceed-to-checkout a.checkout-button,
+.wc-proceed-to-checkout a.button.checkout-button,
+.woocommerce .wc-proceed-to-checkout a.checkout-button {
+  display: block !important;
+  width: 100% !important;
+  padding: 0.875rem 1.5rem !important;
+  background-color: var(--brand-600) !important;
+  color: white !important;
+  font-weight: 700 !important;
+  text-align: center !important;
+  border-radius: 0.5rem !important;
+  text-decoration: none !important;
+  transition: background-color 0.2s !important;
+  border: none !important;
+  box-sizing: border-box !important;
+}
+
+.wc-proceed-to-checkout .checkout-button:hover,
+.wc-proceed-to-checkout a.checkout-button:hover,
+.wc-proceed-to-checkout a.button.checkout-button:hover,
+.woocommerce .wc-proceed-to-checkout a.checkout-button:hover {
+  background-color: var(--brand-700) !important;
+  color: white !important;
+}
+
+/* Remove link styling in cart */
+.woocommerce a.remove {
+  text-decoration: none;
+}
+
+/* Coupon form styling */
+.woocommerce-cart .coupon input[type="text"] {
+  flex: 1;
+}
+
+/* Cart item images */
+.woocommerce-cart-form .product-thumbnail img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Focus states */
+.focus\:ring-brand-500:focus {
+  --tw-ring-color: var(--brand-500);
+}
+
+.focus\:border-brand-500:focus {
+  border-color: var(--brand-500);
+}
+
+/* Hide WooCommerce default empty cart message (we have our own) */
+.woocommerce-cart .cart-empty.woocommerce-info {
+  display: none;
+}
+
+/* Hide default return to shop button (we have our own) */
+.woocommerce-cart .return-to-shop {
+  display: none;
+}
+
+/* Cart totals spacing - force full width and space-between */
+.cart_totals .cart-subtotal,
+.cart_totals .order-total,
+.cart_totals .cart-discount,
+.cart_totals .fee,
+.cart_totals .tax-total,
+.cart_totals .tax-rate {
+  display: flex !important;
+  justify-content: space-between !important;
+  align-items: center !important;
+  width: 100% !important;
+}
+
+.cart_totals .cart-subtotal > span:first-child,
+.cart_totals .order-total > span:first-child {
+  flex-shrink: 0;
+}
+
+.cart_totals .cart-subtotal > span:last-child,
+.cart_totals .order-total > span:last-child {
+  text-align: right;
+  margin-left: auto;
+}
+
+/* Ensure checkout button text is Dutch */
+.wc-proceed-to-checkout a.checkout-button {
+  font-size: 1rem;
+  line-height: 1.5;
+}

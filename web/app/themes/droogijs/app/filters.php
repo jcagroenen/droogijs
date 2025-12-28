@@ -112,3 +112,27 @@ add_filter('woocommerce_add_to_cart_fragments', function (array $fragments): arr
 
     return $fragments;
 });
+
+/**
+ * Change WooCommerce button texts to Dutch.
+ */
+add_filter('woocommerce_order_button_text', fn() => 'Bestelling plaatsen');
+add_filter('gettext', function ($translated, $text, $domain) {
+    if ($domain === 'woocommerce') {
+        $translations = [
+            'Proceed to checkout' => 'Afrekenen',
+            'Add to cart' => 'In winkelwagen',
+            'View cart' => 'Bekijk winkelwagen',
+            'Update cart' => 'Winkelwagen bijwerken',
+            'Apply coupon' => 'Toepassen',
+            'Subtotal' => 'Subtotaal',
+            'Total' => 'Totaal',
+            'Shipping' => 'Verzending',
+        ];
+
+        if (isset($translations[$text])) {
+            return $translations[$text];
+        }
+    }
+    return $translated;
+}, 10, 3);
