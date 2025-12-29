@@ -72,6 +72,8 @@
 | [blade-icons.md](blade-icons.md) | Blade Icons setup and usage |
 | [inspiratie.md](inspiratie.md) | Blog/Inspiratie page setup |
 | [woocommerce.md](woocommerce.md) | WooCommerce templates and structure |
+| [delivery-date-picker.md](delivery-date-picker.md) | Flatpickr delivery date integration |
+| [shipping-calendar-package.md](shipping-calendar-package.md) | Future: Extract to Composer package |
 | [deployment.md](deployment.md) | Deploying multisite to Ploi (full guide) |
 | [todo.md](todo.md) | Deployment tasks |
 

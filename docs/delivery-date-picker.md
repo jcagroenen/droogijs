@@ -34,7 +34,9 @@ The date picker is automatically initialized on any element with the class `.del
 
 ### Backend (PHP)
 
-**File:** `app/filters.php`
+**File:** `app/WooCommerce/DeliveryDate.php`
+
+Registered as a singleton in `app/Providers/ThemeServiceProvider.php`.
 
 #### Hooks Used
 
@@ -55,7 +57,7 @@ The date picker is automatically initialized on any element with the class `.del
 | `views/woocommerce/checkout/review-order.blade.php` | Read-only date display |
 | `views/header/cart-dropdown.blade.php` | Mini-cart with delivery date |
 
-> **Note:** The product page date picker is injected via `woocommerce_before_add_to_cart_button` hook in `app/filters.php` to ensure it's inside the add-to-cart form.
+> **Note:** The product page date picker is injected via `woocommerce_before_add_to_cart_button` hook in `DeliveryDate.php` to ensure it's inside the add-to-cart form.
 
 ## Customization
 

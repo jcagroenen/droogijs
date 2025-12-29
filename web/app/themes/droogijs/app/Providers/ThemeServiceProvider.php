@@ -2,6 +2,8 @@
 
 namespace App\Providers;
 
+use App\Admin\ShippingCalendar;
+use App\WooCommerce\DeliveryDate;
 use Roots\Acorn\Sage\SageServiceProvider;
 
 class ThemeServiceProvider extends SageServiceProvider
@@ -14,6 +16,9 @@ class ThemeServiceProvider extends SageServiceProvider
     public function register()
     {
         parent::register();
+
+        $this->app->singleton(DeliveryDate::class);
+        $this->app->singleton(ShippingCalendar::class);
     }
 
     /**
@@ -24,5 +29,8 @@ class ThemeServiceProvider extends SageServiceProvider
     public function boot()
     {
         parent::boot();
+
+        $this->app->make(DeliveryDate::class)->boot();
+        $this->app->make(ShippingCalendar::class)->boot();
     }
 }
