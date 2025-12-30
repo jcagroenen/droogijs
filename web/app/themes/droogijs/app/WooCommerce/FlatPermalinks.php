@@ -54,6 +54,9 @@ class FlatPermalinks
 
         // Redirect old URLs to new flat URLs
         add_action('template_redirect', [$this, 'redirectOldUrls']);
+
+        // Disable /shop/ page - hook into template_include instead
+        add_filter('template_include', [$this, 'disableShopPage'], 1);
     }
 
     /**
@@ -300,6 +303,25 @@ class FlatPermalinks
                 exit;
             }
         }
+    }
+
+    /**
+     * Disable the /shop/ page - return 404.
+     * In flat permalink structure, products are accessed via categories, not /shop/.
+     */
+    public function disableShopPage(string $template): string
+    {
+        if (is_shop()) {
+            global $wp_query;
+            $wp_query->set_404();
+            status_header(404);
+            nocache_headers();
+
+            // Return the 404 template
+            return \Roots\view('404')->makeLoader();
+        }
+
+        return $template;
     }
 
     /**
