@@ -4,6 +4,7 @@ namespace App\Providers;
 
 use App\Admin\ShippingCalendar;
 use App\WooCommerce\DeliveryDate;
+use App\WooCommerce\FlatPermalinks;
 use Roots\Acorn\Sage\SageServiceProvider;
 
 class ThemeServiceProvider extends SageServiceProvider
@@ -19,6 +20,7 @@ class ThemeServiceProvider extends SageServiceProvider
 
         $this->app->singleton(DeliveryDate::class);
         $this->app->singleton(ShippingCalendar::class);
+        $this->app->singleton(FlatPermalinks::class);
     }
 
     /**
@@ -32,5 +34,6 @@ class ThemeServiceProvider extends SageServiceProvider
 
         $this->app->make(DeliveryDate::class)->boot();
         $this->app->make(ShippingCalendar::class)->boot();
+        $this->app->make(FlatPermalinks::class)->boot();
     }
 }

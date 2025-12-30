@@ -128,6 +128,13 @@ add_filter('woocommerce_add_to_cart_fragments', function (array $fragments): arr
  * Change WooCommerce button texts to Dutch.
  */
 add_filter('woocommerce_order_button_text', fn() => 'Bestelling plaatsen');
+
+/**
+ * Permalink settings are auto-configured by FlatPermalinks class.
+ *
+ * @see App\WooCommerce\FlatPermalinks::ensureCorrectSettings()
+ * @see docs/flat-permalinks.md
+ */
 add_filter('gettext', function ($translated, $text, $domain) {
     if ($domain === 'woocommerce') {
         $translations = [

@@ -2,40 +2,35 @@
 
 ## Work In Progress (WIP)
 
-**Last session:** Deployment, mobile menu & shop fixes
+**Last session:** Flat permalinks (Magento-style URLs)
 
 **What we did:**
-- Deployed multisite to Ploi with Deployer
-- Fixed multisite installation issues (redirect loops, wp-signup.php)
-- Configured SSL for subdomains
-- Set up DNS wildcard for subdomains
-- Created staging sites (thuis/horeca/industrie)
-- Added dev/staging site switcher in header
-- Network activated WooCommerce
-- Installed WordPress Importer plugin for XML imports
-- Updated hero CTA button to link to shop
-- Added hero image (Droogijs_gaslas.jpg)
-- Implemented mobile menu with Alpine.js
-- Fixed shop page layout (sorting bar, product grid)
+- Implemented flat URL structure (no `/product/` or `/product-category/` prefixes)
+- Created `FlatPermalinks` class (~400 lines) handling URL rewriting and slug collision prevention
+- Products now at `/product-slug/` instead of `/product/product-slug/`
+- Categories now at `/category-slug/` instead of `/product-category/category-slug/`
+- Old URLs automatically 301 redirect to new flat URLs
+- Slug collision checker prevents products/categories from having same slug
+- Production permalink locking in `app/filters.php`
+- Full documentation in `docs/flat-permalinks.md`
 
 **Technical notes:**
-- Alpine.js is self-hosted in `resources/scripts/alpine.js` (not bundled via Vite due to multisite CORS issues)
-- Alpine is enqueued via WordPress in `app/setup.php`
-- Use `x-on:click` instead of `@click` in Blade templates (Blade interprets `@` as directive)
+- Flat permalinks work by intercepting WordPress's `request` filter and `wp` action
+- Template forcing required for Sage/Blade compatibility via `template_include` filter
+- Settings locked in production via `pre_option_*` filters
+- Required WP settings: Post name permalink structure (`/%postname%/`)
 
 **Where we left off:**
-- Staging is live at `droogijs.groenen-webdev.nl`
-- All three subsites working with SSL
-- Site switcher for easy testing between brands
-- Hero section complete with image
-- Mobile menu working
-- Shop page grid fixed
+- Flat URLs working on thuis.droogijs.test
+- `/droogijs/` → Category page
+- `/droogijs-dry-ice-6-kg-in-eps-doos/` → Product page
+- Database backup in `branch_dbs/main/`
 
 **Ready to continue with:**
-- Add products to horeca/industrie sites
-- Style cart & checkout templates
+- Apply flat permalinks to other multisite sites (horeca/industrie)
+- Livewire filtering (in-place product filtering without page redirect)
 - Footer section
-- Test mobile menu on staging (deploy needed)
+- Cart & checkout template styling
 
 ## Current State
 
@@ -72,6 +67,7 @@
 | [blade-icons.md](blade-icons.md) | Blade Icons setup and usage |
 | [inspiratie.md](inspiratie.md) | Blog/Inspiratie page setup |
 | [woocommerce.md](woocommerce.md) | WooCommerce templates and structure |
+| [flat-permalinks.md](flat-permalinks.md) | Flat URL structure (no /product/ or /product-category/) |
 | [delivery-date-picker.md](delivery-date-picker.md) | Flatpickr delivery date integration |
 | [shipping-calendar-package.md](shipping-calendar-package.md) | Future: Extract to Composer package |
 | [deployment.md](deployment.md) | Deploying multisite to Ploi (full guide) |
